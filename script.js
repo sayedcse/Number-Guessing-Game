@@ -7,8 +7,8 @@ let highScore = 0;
 const displayMessage = (message) => {
     document.querySelector('.message').textContent = message;
 };
-// Click Button func
-document.querySelector('.check').addEventListener('click', () => {
+//Button Click func
+const btnClicked = () => {
     const guessedNumber = Number(document.querySelector('.guess').value);
     // Empty input Warning
     if (!guessedNumber) {
@@ -38,6 +38,13 @@ document.querySelector('.check').addEventListener('click', () => {
             displayMessage('💥 Game Over!');
             document.querySelector('.score').textContent = 0;
         }
+    }
+};
+document.querySelector('.check').addEventListener('click', btnClicked);
+//Enter press func
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        btnClicked();
     }
 });
 // Again Button func
